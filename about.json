@@ -1,15 +1,10 @@
 {
-  "name": "discourse-pixel-avatar",
+  "name": "Pixel-drawing Avatars",
   "component": true,
   "authors": "dsims",
-  "about_url": "TODO: Put your theme's public repo or Meta topic URL here",
-  "license_url": "TODO: Put your theme's LICENSE URL here",
-  "learn_more": "TODO",
+  "about_url": "https://github.com/dsims/discourse-pixel-drawing-avatar",
   "theme_version": "0.0.1",
-  "minimum_discourse_version": null,
-  "maximum_discourse_version": null,
   "assets": {
-  },
-  "modifiers": {
+    "paintbg": "assets/paintbg.gif"
   }
 }

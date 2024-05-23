@@ -1,0 +1,61 @@
+<DModal
+  class="pixel-drawing-modal"
+  @hideHeader={{true}}
+  @closeModal={{@closeModal}}
+>
+  <:body>
+    <div style="display:flex">
+      <div class="drawing-canvas">
+        {{! template-lint-disable no-pointer-down-event-binding  }}
+        <canvas
+          {{draw-pixels this.scale}}
+          {{on "mousedown" this.canvasClick}}
+          {{on "mouseup" this.canvasStopDraw}}
+          {{on "mouseenter" this.canvasEnter}}
+          {{on "mouseout" this.canvasLeave}}
+          {{on "mousemove" this.canvasMove}}
+        />
+      </div>
+      <div style="padding-left:20px;">
+        <div id="palette">
+          <canvas
+            {{draw-palette this.paletteScale}}
+            {{on "mouseup" this.paletteClick}}
+          />
+        </div>
+      </div>
+    </div>
+  </:body>
+  <:footer>
+    <div width="16" height="16" style={{this.selectedColorStyle}}></div>
+    <DButton
+      @icon="far-edit"
+      @action={{fn this.selectButton "paint"}}
+      @translatedLabel="Draw"
+      class={{if (eq this.selectedButton "paint") "btn-active"}}
+    />
+    <DButton
+      @action={{fn this.selectButton "eraser"}}
+      @translatedLabel="Eraser"
+      class={{if (eq this.selectedButton "eraser") "btn-active"}}
+    />
+    <DButton
+      @action={{fn this.selectButton "fill"}}
+      @translatedLabel="Fill"
+      class={{if (eq this.selectedButton "fill") "btn-active"}}
+    />
+    <DButton
+      @action={{fn this.selectButton "dropper"}}
+      @translatedLabel="Dropper"
+      class={{if (eq this.selectedButton "dropper") "btn-active"}}
+    />
+    <DButton @action={{this.clickUndo}} @translatedLabel="Undo" />
+    <DButton @icon="times" @action={{@closeModal}} @label="close" />
+    <DButton @action={{this.save}} @label="submit" class="btn-primary" />
+    <canvas style="border:solid 1px;border-radius:10%" {{draw-pixels 3}} />
+    <canvas
+      style="display:none"
+      {{draw-pixels this.maxAvatarSize setDataURL=true}}
+    />
+  </:footer>
+</DModal>

@@ -1,5 +1,5 @@
-# discourse-pixel-avatar
+# Pixel-Drawing avatars
 
-**Theme Summary**
+**Discourse Theme Component**
 
-For more information, please see: **url to meta topic**
+Replaces the avatar-uploader with a canvas to draw a 16x16 avatar.

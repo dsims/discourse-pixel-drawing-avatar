@@ -1,0 +1,16 @@
+.d-modal.pixel-drawing-modal {
+  .d-modal__container {
+    max-width: 655px;
+  }
+
+  .d-modal__footer {
+    padding-top: 0.5rem;
+  }
+
+  .drawing-canvas {
+    width: 512px;
+    height: 512px;
+    background-size: 32px;
+    background-image: url($paintbg);
+  }
+}
