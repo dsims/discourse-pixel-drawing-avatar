@@ -15,7 +15,7 @@ export default {
           const file = new File([buf], "avatar-drawing.png", {
             type: "image/png",
           });
-          await this._addFiles(file);
+          await this.uppyUpload.addFiles(file);
         },
       });
     });
