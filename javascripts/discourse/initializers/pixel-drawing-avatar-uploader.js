@@ -1,23 +1,25 @@
 import { action } from "@ember/object";
 import { withPluginApi } from "discourse/lib/plugin-api";
+import AvatarSelectorModal from "../components/avatar-selector";
 
 export default {
   name: "pixel-drawing-avatar-uploader",
 
   initialize() {
     withPluginApi("0.8", (api) => {
-      api.modifyClass("component:avatar-uploader", {
-        pluginId: "pixel-drawing-avatar-uploader",
-        @action
-        async save(dataURL) {
-          const res = await fetch(dataURL);
-          const buf = await res.arrayBuffer();
-          const file = new File([buf], "avatar-drawing.png", {
-            type: "image/png",
-          });
-          await this.uppyUpload.addFiles(file);
-        },
-      });
+      //to use our AvatarSelectorModal to use our AvatarUploader to use PixelDrawingModal
+      api.modifyClass(
+        "route:preferences-account",
+        (Superclass) =>
+          class extends Superclass {
+            @action
+            showAvatarSelector(user) {
+              this.modal.show(AvatarSelectorModal, {
+                model: { user },
+              });
+            }
+          }
+      );
     });
   },
 };

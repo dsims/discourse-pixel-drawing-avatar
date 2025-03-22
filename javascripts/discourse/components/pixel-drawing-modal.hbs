@@ -29,7 +29,7 @@
   <:footer>
     <div width="16" height="16" style={{this.selectedColorStyle}}></div>
     <DButton
-      @icon="far-edit"
+      @icon="far-pen-to-square"
       @action={{fn this.selectButton "paint"}}
       @translatedLabel="Draw"
       class={{if (eq this.selectedButton "paint") "btn-active"}}
@@ -50,7 +50,7 @@
       class={{if (eq this.selectedButton "dropper") "btn-active"}}
     />
     <DButton @action={{this.clickUndo}} @translatedLabel="Undo" />
-    <DButton @icon="times" @action={{@closeModal}} @label="close" />
+    <DButton @icon="xmark" @action={{@closeModal}} @label="close" />
     <DButton @action={{this.save}} @label="submit" class="btn-primary" />
     <canvas style="border:solid 1px;border-radius:10%" {{draw-pixels 3}} />
     <canvas
